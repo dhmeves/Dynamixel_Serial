@@ -26,6 +26,10 @@ Version 2.2
 #else
  #include <WProgram.h>
  #include <pins_arduino.h>
+ #define PORT0                           0x00
+ #define PORT1                           0x01
+ #define PORT2                           0x02
+ #define PORT3                           0x03
 #endif
 
 //#########################################################################
@@ -125,11 +129,6 @@ Version 2.2
 
 //#########################################################################
 //############################ Specials ###################################
-#define PORT0                           0x00
-#define PORT1                           0x01
-#define PORT2                           0x02
-#define PORT3                           0x03
-
 #define OFF                             0x00
 #define ON                              0x01
 
@@ -158,7 +157,9 @@ public:
     DynamixelClass(): Direction_Pin(-1), Status_Return_Value(READ) { }
 
     void begin(long);
+    void begin(long, int);
     void begin(HardwareSerial&, long);
+    void begin(HardwareSerial&, long, int);
     void begin(Stream&);
     void end(void);
 

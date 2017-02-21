@@ -37,6 +37,19 @@ void DynamixelClass::begin(long baud){
 
 }
 
+void DynamixelClass::begin(long baud, int dir_pin){
+
+#if defined(__AVR_ATmega32U4__) || defined(__MK20DX128__) || defined(__AVR_ATmega2560__)
+    Serial1.begin(baud);  // Set up Serial for Leonardo and Mega
+    _serial = &Serial1;
+#else
+    Serial.begin(baud);   // Set up Serial for all others (Uno, etc)
+    _serial = &Serial;
+#endif
+    Direction_Pin = dir_pin;
+    pinMode(Direction_Pin,OUTPUT);
+
+}
 void DynamixelClass::begin(HardwareSerial &HWserial, long baud){
 
     HWserial.begin(baud); // Set up Serial for a specified Serial object
@@ -44,6 +57,14 @@ void DynamixelClass::begin(HardwareSerial &HWserial, long baud){
 
 }
 
+void DynamixelClass::begin(HardwareSerial &HWserial, long baud, int dir_pin){
+
+    HWserial.begin(baud); // Set up Serial for a specified Serial object
+    _serial = &HWserial;
+    Direction_Pin = dir_pin;
+    pinMode(Direction_Pin,OUTPUT);
+
+}
 void DynamixelClass::begin(Stream &serial){
 
     _serial = &serial;  // Set a reference to a specified Stream object (Hard or Soft Serial)
