@@ -1,6 +1,6 @@
 /*
 
-Version 2.2
+Version 2.3
 
  This library is free software; you can redistribute it and/or
  modify it under the terms of the GNU Lesser General Public
@@ -34,7 +34,7 @@ void DynamixelClass::begin(long baud){
     Serial.begin(baud);   // Set up Serial for all others (Uno, etc)
     _serial = &Serial;
 #endif
-
+    Direction_Pin = -1;
 }
 
 void DynamixelClass::begin(long baud, int dir_pin){
@@ -54,6 +54,7 @@ void DynamixelClass::begin(HardwareSerial &HWserial, long baud){
 
     HWserial.begin(baud); // Set up Serial for a specified Serial object
     _serial = &HWserial;
+    Direction_Pin = -1;
 
 }
 
@@ -68,7 +69,7 @@ void DynamixelClass::begin(HardwareSerial &HWserial, long baud, int dir_pin){
 void DynamixelClass::begin(Stream &serial){
 
     _serial = &serial;  // Set a reference to a specified Stream object (Hard or Soft Serial)
-
+    Direction_Pin = -1;
 }
 
 void DynamixelClass::end(){
