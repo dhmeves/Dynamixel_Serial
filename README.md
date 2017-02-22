@@ -73,8 +73,8 @@ CAUTION:
   [http://support.robotis.com/en/product/dynamixel/communication/dxl_instruction.htm](http://support.robotis.com/en/product/dynamixel/communication/dxl_instruction.htm)
 
 ## Attribution
-Original code by J.Teda [https://code.google.com/p/slide-33/](https://code.google.com/p/slide-33/)
-Notable contributions by Nash Kaminski
+* Original code by J.Teda [https://code.google.com/p/slide-33/](https://code.google.com/p/slide-33/)
+* Notable contributions by Nash Kaminski
 
 ## License
 Released under LGPL, see `LICENSE.txt`
