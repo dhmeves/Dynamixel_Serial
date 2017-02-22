@@ -17,7 +17,7 @@ You do not need a half to full duplex circuit if you do not wish to receive ANY 
     ====================================
     GND (1) -------------- GND (GND)
     +12V (2) -------------- +12v (VIN)
-    DATA(3) -------------- TX (Arduino Pin 1) 
+    DATA(3) ---330 ohm R--- TX (Arduino Pin 1) 
 
 
 ### Connection of Dynamixel RX to Arduino 
