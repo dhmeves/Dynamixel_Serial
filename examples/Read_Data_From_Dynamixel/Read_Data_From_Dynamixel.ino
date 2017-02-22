@@ -10,7 +10,7 @@ You will need to make or purchase a half duplex to full duplex circuit to run th
 
 #define SERVO_ID 0x01               // ID of which we will set Dynamixel too
 #define SERVO_ControlPin 0x02       // Control pin of buffer chip, NOTE: this does not matter becasue we are not using a half to full contorl buffer.
-#define SERVO_SET_Baudrate 57600    // Baud rate speed which the Dynamixel will be set too (57600)
+#define SERVO_SET_Baudrate 57142   // Baud rate speed which the Dynamixel will be set too (57142)
 
 // The define error codes below are as per Robotis e-Manual ( http://support.robotis.com/en/product/dynamixel/communication/dxl_packet.htm )
 #define VOLTAGE_ERROR          B00000001

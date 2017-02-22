@@ -1,7 +1,7 @@
 /*
 J.Teda 21/04/2013
 
-Exsample of how to run Dynamixel in SERVO mode - tell servo what angle to move to.
+Exsample of how to run Dynamixel AX or MX in SERVO mode - tell servo what angle to move to.
 
 Robotis e-Manual ( http://support.robotis.com )
 
@@ -11,7 +11,7 @@ Robotis e-Manual ( http://support.robotis.com )
 
 #define SERVO_ID 0x01               // ID of which we will set Dynamixel too
 #define SERVO_ControlPin 0x02       // Control pin of buffer chip, NOTE: this does not matter becasue we are not using a half to full contorl buffer.
-#define SERVO_SET_Baudrate 57600    // Baud rate speed which the Dynamixel will be set too (57600)
+#define SERVO_SET_Baudrate 57142    // Baud rate speed which the Dynamixel will be set too (57142)
 #define CW_LIMIT_ANGLE 0x001        // lowest clockwise angle is 1, as when set to 0 it set servo to wheel mode
 #define CCW_LIMIT_ANGLE 0xFFF       // Highest anit-clockwise angle is 0XFFF, as when set to 0 it set servo to wheel mode
 

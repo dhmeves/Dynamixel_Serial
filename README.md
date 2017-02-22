@@ -5,6 +5,10 @@ Arduino library for interfacing with Dynamixel MX series servos over serial comm
 
 ## Usage
 
+### Notes on baud rates
+* As of Arduino 1.6.x, the exact baud rate computed by Baudrate = 2000000 / (b + 1) must be passed to this library or the Arduino serial library may choose a hardware baudrate with too large of an error for proper communication. This issue is confirmed to occur if 57600 baud is used to communicate with a Dynamixel servo setup with b = 34, which is the default for RX servos.
+* Never set the baud rate register to a value of zero. This configuration is unsupported by Dynamixel and many UARTs are not capable of reliable communication at this speed which can result in you no longer being able to communicate with the servo. Reflashing the firmware via the dynamixel to USB interface is the only known way of recovering from this state.
+
 ### Connection of Dynamixel AX or MX to Arduino 
 
 You do not need a half to full duplex circuit if you do not wish to receive ANY data FROM the Dynamixel servo, as we are only setting up the Dynamixel servo we will leave this circuit out and connect directly to Arduino to make things simple.

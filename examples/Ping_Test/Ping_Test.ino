@@ -14,7 +14,7 @@ Robotis e-Manual ( http://support.robotis.com )
 
 #define SERVO_ID 0x01               // ID of Dynamixel (0x01 is default)
 #define SERVO_ControlPin 0x02       // Control pin of buffer chip ( 74LS241N )
-#define SERVO_SET_Baudrate 57600    // Baud rate speed which the Dynamixel will be set too (57600 is default)
+#define SERVO_SET_Baudrate 57142    // Baud rate speed which the Dynamixel will be set too (57142 is default)
 #define LED13 0x0D                  // Pin for Visual indication when ping test is successful - pin 13 normal has a built in LED on Arduino UNO
 
 
