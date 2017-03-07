@@ -857,7 +857,7 @@ void DynamixelClass::transmitInstructionPacket(void){                           
     if (Direction_Pin > -1){
         digitalWrite(Direction_Pin,HIGH);                                               // Set TX Buffer pin to HIGH
     }
-
+    delayMicroseconds(10);
     _serial->write(HEADER);                                                             // 1 Write Header (0xFF) data 1 to serial
     _serial->write(HEADER);                                                             // 2 Write Header (0xFF) data 2 to serial
     _serial->write(Instruction_Packet_Array[0]);                                        // 3 Write Dynamixal ID to serial
@@ -871,33 +871,19 @@ void DynamixelClass::transmitInstructionPacket(void){                           
         checksum_packet += Instruction_Packet_Array[i];
     }
 
-    noInterrupts();
 
     _serial->write(~checksum_packet & 0xFF);                                            // Write low bit of checksum to serial
 
-#if defined(__AVR_ATmega32U4__) || defined(__MK20DX128__) || defined(__AVR_ATmega2560__) // Leonardo and Mega use Serial1
-    if ((UCSR1A & B01100000) != B01100000){                                             // Wait for TX data to be sent
-        _serial->flush();
-    }
+#if (ARDUINO >= 100)
 
-#elif defined(__SAM3X8E__)
-
-    //if(USART_GetFlagStatus(USART1, USART_FLAG_TC) != RESET)
-        _serial->flush();
-    //}
-
+        _serial->flush();                                                               //Arduino 1.0.x actually flushes the buffer
 #else
-    if ((UCSR0A & B01100000) != B01100000){                                             // Wait for TX data to be sent
-        _serial->flush();
-    }
-
+#error "This library requires Arduino 1.0 or greater"
 #endif
 
     if (Direction_Pin > -1){
         digitalWrite(Direction_Pin,LOW);                                                //Set TX Buffer pin to LOW after data has been sent
     }
-
-    interrupts();
 
 }
 
